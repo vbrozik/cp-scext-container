@@ -14,3 +14,7 @@ services:
   api:
     image: httpd
     container_name: api
+  graphql:
+    build: ./api
+    container_name: graphql
+    
