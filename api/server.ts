@@ -4,6 +4,8 @@ import { serve } from 'https://deno.land/std@0.157.0/http/server.ts'
 import  config  from './config.ts'
 import { GithubClient } from './github.ts'
 
+console.log("config", JSON.stringify(config, null, 2));
+
 const githubClient = new GithubClient(config.ghToken)
 
 const typeDefs = `
