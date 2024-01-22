@@ -4,7 +4,7 @@ WORKDIR /app
 USER deno
 
 COPY . .
-rm deno.lock
+RUN rm deno.lock
 
 RUN deno cache  --lock-write server.ts
 RUN mkdir -p /var/tmp/log
