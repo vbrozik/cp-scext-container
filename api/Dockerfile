@@ -1,10 +1,12 @@
 FROM denoland/deno:1.39.4
 EXPOSE 3003
 WORKDIR /app
+USER deno
 
 COPY . .
+rm deno.lock
+
 RUN deno cache  --lock-write server.ts
 RUN mkdir -p /var/tmp/log
-USER deno
 
 CMD ["run", "--allow-all", "server.ts"]
