@@ -1,6 +1,11 @@
 import { createSchema, createYoga } from 'graphql-yoga'
 import { serve } from 'https://deno.land/std@0.157.0/http/server.ts'
 
+import  config  from './config'
+import { GithubClient } from './github'
+
+const githubClient = new GithubClient(config.ghToken)
+
 const typeDefs = `
   scalar JSON
 
@@ -8,7 +13,7 @@ const typeDefs = `
     hello(name: String): String!
   }
   type Mutation {
-    savePolicyToGithub(policy: JSON): Boolean!
+    savePolicyToGithub(policy: JSON): String
   }
 `
 
@@ -17,15 +22,44 @@ const resolvers = {
     hello: (_, { name }) => `Hello ${name || 'World'}`,
   },
   Mutation: {
-    savePolicyToGithub: (_, { policy }) => {
+    savePolicyToGithub: async (_, { policy }, { config, githubClient }) => {
         console.log(policy)
-        return true
+
+        console.log("savePolicyToGithub", { config, githubClient });
+
+        const owner = config.ghRepoOwener;
+        const repo = config.ghRepoName;
+        const branch = config.ghRepoBranch; // base
+        const planBranch = config.ghRepoPlanBranch; // head
+        const path = config.ghRepoFile;
+        const changes = [
+          {
+          files: {
+            [path]: policy
+          },
+          commit: "new policy",
+        }
+        ]
+      
+        
+        const message = "CP policy";
+
+        try {
+          const res = await githubClient.createPullRequest(owner, repo, "cp policy", message, planBranch, branch, changes);
+          console.log(res);
+          return res?.data?.number
+        } catch (e) {
+          console.log(e);
+          return null;
+        }
+
+        return null
     }
   }
 }
 
 const yoga = createYoga({
-    context: {},
+    context: { config, githubClient},
     schema: createSchema({
       typeDefs,
       resolvers
