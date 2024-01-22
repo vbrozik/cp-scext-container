@@ -22,6 +22,7 @@ RUN chmod +x /entry.sh
 
 COPY ./index.html /usr/share/nginx/html/index.html
 COPY ./hello-world/ /usr/share/nginx/html/hello-world/
+COPY ./cp2gh/ /usr/share/nginx/html/cp2gh/
 
 ENTRYPOINT [ "/entry.sh" ]
 # CMD ["nginx", "-g", "daemon off;"]
