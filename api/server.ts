@@ -37,7 +37,7 @@ const resolvers = {
         const changes = [
           {
           files: {
-            [path]: JSON.stringify(policy, null, 2);
+            [path]: JSON.stringify(policy, null, 2),
           },
           commit: "new policy",
         }
