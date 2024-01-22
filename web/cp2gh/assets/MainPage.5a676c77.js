@@ -1,1 +1,0 @@
-import{Q as e,a as t}from"./QLayout.67d5f484.js";import{_ as o,o as r,c as s,w as a,a as c,b as n}from"./index.a294dbb0.js";import"./dom.950aa360.js";const _={},i=n("div",null,"main",-1);function l(f,d){return r(),s(e,{view:"lHh Lpr lFf"},{default:a(()=>[c(t,null,{default:a(()=>[i]),_:1})]),_:1})}var h=o(_,[["render",l]]);export{h as default};
