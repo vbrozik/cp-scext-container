@@ -29,7 +29,7 @@ const resolvers = {
 
         console.log("savePolicyToGithub", { config, githubClient });
 
-        const owner = config.ghRepoOwener;
+        const owner = config.ghRepoOwner;
         const repo = config.ghRepoName;
         const branch = config.ghRepoBranch; // base
         const planBranch = config.ghRepoPlanBranch; // head
