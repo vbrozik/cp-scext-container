@@ -6,7 +6,9 @@ if [ -n "$APIUSER" ] && [ -n "$APIPASS" ]; then
 fi
 
 if [ -n "$CERTSUBJECT" ]; then
-   mkcert --cert-file web.crt --key-file web.key  "$CERTSUBJECT"
+
+    echo mkcert not implemented yet
+#   mkcert --cert-file web.crt --key-file web.key  "$CERTSUBJECT"
 fi
 
 nginx -g "daemon off;"
