@@ -29,3 +29,9 @@ openssl x509 -in web.crt -text -noout | grep -i -A 2 subject
 docker-compose logs -ft
 
 ```
+
+Check mockup policy at https://helped-buck.mshome.net/cp2gh/#/policy
+
+Extension to install: https://helped-buck.mshome.net/cp2gh/extension.json
+
+(where helped-buck.mshone.net is your host)
