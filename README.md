@@ -23,6 +23,7 @@ mkcert --cert-file web.crt --key-file web.key  helped-buck.mshome.net
 openssl x509 -in web.crt -text -noout | grep -i -A 2 subject
 
 # pass the cert
+ export PAT=aaa # RW contents RW pull req. repo scoped
  ENCCRT=$(cat web.crt | base64 -w0) ENCKEY=$(cat web.key | base64 -w0) docker-compose up -d --build
 
 #monitor 
