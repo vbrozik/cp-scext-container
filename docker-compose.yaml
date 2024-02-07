@@ -11,30 +11,15 @@ services:
       - APIUSER=guru
       - APIPASS=123456
       - CERTSUBJECT=127.0.0.1.nip.io
-
-  # api:
-  #   image: httpd
-  #   container_name: api
-  #   environment:
-  #     - GH_TOKEN=invalid
-  #     - REPO_OWNER=mkol5222
-  #     - REPO_NAME=filex
-  #     - REPO_FILE=policy/somepolicy.json
-  #     - REPO_BRANCH=main
-  #     - REPO_PLAN_BRANCH=plan
-  #     # ghToken: env.GH_TOKEN,// env.GIT_TOKEN,
-  #     # ghRepoOwner: env.REPO_OWNER,
-  #     # ghRepoName: env.REPO_NAME,
-  #     # ghRepoFile: env.REPO_FILE,
-  #     # ghRepoBranch: env.REPO_BRANCH,
-  #     # ghRepoPlanBranch: env.REPO_PLAN_BRANCH,
+      - ENCKEY=$ENCKEY
+      - ENCCRT=$ENCCRT
 
 
   graphql:
     build: ./api
     container_name: graphql
     environment:
-    - GH_TOKEN=invalid
+    - GH_TOKEN=$PAT
     - REPO_OWNER=mkol5222
     - REPO_NAME=filex
     - REPO_FILE=policy/somepolicy.json

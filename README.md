@@ -12,3 +12,20 @@ Contents:
 * /hello-world - path with SmartConsole Extension
 * /api/ - password protected path of reverse proxy to API server
 
+### Certificate
+
+```shell
+# create cert
+sudo apt install -y mkcert
+mkcert --cert-file web.crt --key-file web.key  helped-buck.mshome.net
+
+# inspect cert
+openssl x509 -in web.crt -text -noout | grep -i -A 2 subject
+
+# pass the cert
+ ENCCRT=$(cat web.crt | base64 -w0) ENCKEY=$(cat web.key | base64 -w0) docker-compose up -d --build
+
+#monitor 
+docker-compose logs -ft
+
+```
