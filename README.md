@@ -16,7 +16,13 @@ Contents:
 
 ```shell
 # create cert
+sudo apt update
 sudo apt install -y mkcert
+
+curl -sLS https://get.arkade.dev | sudo sh
+ark get mkcert
+sudo mv /home/codespace/.arkade/bin/mkcert /usr/local/bin/
+
 mkcert --cert-file web.crt --key-file web.key  helped-buck.mshome.net
 
 # inspect cert
