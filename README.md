@@ -1,3 +1,8 @@
+# Ubuntu preparation
+``` shell
+sudo apt install docker-compose-v2
+```
+
 # Container with SmartConsole Extension and API service
 
 - host SmartConsole Extension on HTTPS server in container
